@@ -167,7 +167,7 @@ class UserAdminTest {
         
         
         assertEquals(expectedOutput, outputStream.toString());
-	//System.out.println(outputStream.toString());
+	System.out.println(outputStream.toString());
     } 
 
     //Testing runUserReport() when there is greater than 10 users in the database
@@ -202,8 +202,9 @@ class UserAdminTest {
         System.setOut(stdout);
         
         String expectedOutput = "Total number of users: 11\r\nuser1\r\nuser2\r\nuser3\r\nuser4\r\nuser5\r\n6 more...\r\n";
-        System.out.println(outputStream.toString());
+        
         assertEquals(expectedOutput, outputStream.toString());
+	System.out.println(outputStream.toString());
     }  
     //Testing runUserReport() for SQLException
     @Test
