@@ -165,8 +165,9 @@ class UserAdminTest {
         System.setOut(stdout);
         String expectedOutput = "Listing all usernames:\r\nuser1\r\nuser2\r\nuser3\r\nuser4\r\nuser5\r\nuser6\r\nuser7\r\nuser8\r\nuser9\r\nuser10\r\n";
         
-        System.out.println(outputStream.toString());
+        
         assertEquals(expectedOutput, outputStream.toString());
+	//System.out.println(outputStream.toString());
     } 
 
     //Testing runUserReport() when there is greater than 10 users in the database
