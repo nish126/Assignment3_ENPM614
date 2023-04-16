@@ -1,0 +1,64 @@
+plugins {
+    // Apply the java plugin to add support for Java/Spring
+    id 'org.springframework.boot' version '2.7.10'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+    id 'jacoco'
+
+    // Apply the application plugin to add support for building a CLI application.
+    id 'application'
+}
+
+group = 'edu.umd.enpm614.assignment3'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'javax.inject:javax.inject:1'
+	implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    // Use JUnit test framework
+    testImplementation 'org.jmockit:jmockit:1.49'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'edu.umd.enpm614.App'
+}
+
+test {
+    useJUnitPlatform()
+    jvmArgs "-javaagent:${classpath.find { it.name.contains("jmockit") }.absolutePath}"
+}
+
+check.dependsOn jacocoTestReport
+
+// *************************************************************************
+//  Write your task below this comment. DO NOT change anything before this.
+// *************************************************************************
+task myGradleTask {
+   dependsOn build
+    doLast {
+        println "Build Finished!"
+    }
+    
+}
